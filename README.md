@@ -26,12 +26,12 @@ Our BasicIRSTD can help researchers to get access to infrared small target detct
 <br><br>
 
 ## Datasets
-* **NUST-SIRST** &nbsp; [[download dir]](https://github.com/wanghuanphd/MDvsFA_cGAN) &nbsp; [[paper]](https://openaccess.thecvf.com/content_ICCV_2019/papers/Wang_Miss_Detection_vs._False_Alarm_Adversarial_Learning_for_Small_Object_ICCV_2019_paper.pdf)
-* **NUAA-SIRST** &nbsp; [[download dir]](https://github.com/YimianDai/sirst) &nbsp; [[paper]](https://arxiv.org/pdf/2009.14530.pdf)
-* **NUDT-SIRST** &nbsp; [[download dir]](https://github.com/YeRen123455/Infrared-Small-Target-Detection) &nbsp; [[paper]](https://ieeexplore.ieee.org/abstract/document/9864119)
+* **NUST-SIRST** &nbsp; [[download]](https://github.com/wanghuanphd/MDvsFA_cGAN) &nbsp; [[paper]](https://openaccess.thecvf.com/content_ICCV_2019/papers/Wang_Miss_Detection_vs._False_Alarm_Adversarial_Learning_for_Small_Object_ICCV_2019_paper.pdf)
+* **NUAA-SIRST** &nbsp; [[download]](https://github.com/YimianDai/sirst) &nbsp; [[paper]](https://arxiv.org/pdf/2009.14530.pdf)
+* **NUDT-SIRST** &nbsp; [[download]](https://github.com/YeRen123455/Infrared-Small-Target-Detection) &nbsp; [[paper]](https://ieeexplore.ieee.org/abstract/document/9864119)
 * **IRSTD-1K** &nbsp; [[download dir]](https://github.com/RuiZhang97/ISNet) &nbsp; [[paper]](https://ieeexplore.ieee.org/document/9880295)
-* **NUDT-SIRST-Sea** &nbsp; [[download dir]](https://github.com/TianhaoWu16/Multi-level-TransUNet-for-Space-based-Infrared-Tiny-ship-Detection) &nbsp; [[paper]](https://ieeexplore.ieee.org/document/10011449/)
-* **IRDST** &nbsp; [[download dir]](https://github.com/sun11999/RDIAN) &nbsp; [[paper]](https://ieeexplore.ieee.org/document/10011452/)
+* **NUDT-SIRST-Sea** &nbsp; [[download]](https://github.com/TianhaoWu16/Multi-level-TransUNet-for-Space-based-Infrared-Tiny-ship-Detection) &nbsp; [[paper]](https://ieeexplore.ieee.org/document/10011449/)
+* **IRDST** &nbsp; [[download]](https://github.com/sun11999/RDIAN) &nbsp; [[paper]](https://ieeexplore.ieee.org/document/10011452/)
 
 **We used the NUAA-SIRST, NUDT-SIRST, IRSTD-1K for both training and test. 
 Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1kpnH26Vk-1gqO22K6fVpqQ?pwd=1113) (key:1113), and place the 3 datasets to the folder `./datasets/`. More results will be released soon!** 
