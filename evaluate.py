@@ -30,8 +30,8 @@ def eval():
     eval_mIoU = mIoU() 
     eval_PD_FA = PD_FA()
     for idx_iter, (pre_mask, gt_mask, size) in enumerate(test_loader):
-        eval_mIoU.update((pre_mask>opt.threshold).cpu(), gt_mask)
-        eval_PD_FA.update((pre_mask[0,0,:,:]>opt.threshold).cpu(), gt_mask[0,0,:,:], size)     
+        eval_mIoU.update(pre_mask>opt.threshold, gt_mask)
+        eval_PD_FA.update(pre_mask[0,0,:,:]>opt.threshold, gt_mask[0,0,:,:], size)     
     
     results1 = eval_mIoU.get()
     results2 = eval_PD_FA.get()
