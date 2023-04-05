@@ -40,12 +40,14 @@ def test():
     for idx_iter, (img, gt_mask, size, img_dir) in enumerate(test_loader):
         img = Variable(img).cuda()
         pred = net.forward(img)
+        pred = pred[:,:,:size[0],:size[1]]
+        gt_maks = gt_mask[:,:,:size[0],:size[1]]
         eval_mIoU.update((pred>opt.threshold).cpu(), gt_mask)
         eval_PD_FA.update((pred[0,0,:,:]>opt.threshold).cpu(), gt_mask[0,0,:,:], size)   
         
         ### save img
         if opt.save_img == True:
-            img_save = transforms.ToPILImage()((pred[0,:,:size[0],:size[1]]).cpu())
+            img_save = transforms.ToPILImage()((pred[0,0,:,:]).cpu())
             if not os.path.exists(opt.save_img_dir + opt.dataset_name + '/' + opt.model_name):
                 os.makedirs(opt.save_img_dir + opt.dataset_name + '/' + opt.model_name)
             img_save.save(opt.save_img_dir + opt.dataset_name + '/' + opt.model_name + '/' + img_dir[0] + '.png')  
