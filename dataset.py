@@ -79,8 +79,6 @@ class EvalSetLoader(Dataset):
         mask_gt = np.array(mask_gt, dtype=np.float32)  / 255.0
         
         h, w = mask_pred.shape
-        mask_pred = np.pad(mask_pred, ((0, (h//32+1)*32-h),(0, (w//32+1)*32-w)), mode='constant')
-        mask_gt = np.pad(mask_gt, ((0,(h//32+1)*32-h),(0,(w//32+1)*32-w)), mode='constant')
         
         mask_pred, mask_gt = mask_pred[np.newaxis,:], mask_gt[np.newaxis,:]
         
