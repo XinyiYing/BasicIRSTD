@@ -112,7 +112,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1kp
 
 **We benchmark several methods on the above datasets. mIoU, PD and FA metrics under threshold=0.5 are used for quantitative evaluation.**
 
-<!-- **Note: A detailed review of existing IRSTD methods can be referred to [XinyiYing/IRSTD Methods](https://github.com/XinyiYing/IRSTD-Methods).** -->
+**Note: A detailed review of existing IRSTD methods can be referred to [Tianfang-Zhang/awesome-infrared-small-targets](https://github.com/Tianfang-Zhang/awesome-infrared-small-targets).** 
 
 ### **mIoU/PD/FA values achieved by different methods:**
 <br>
