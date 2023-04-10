@@ -12,6 +12,7 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 parser = argparse.ArgumentParser(description="PyTorch BasicIRSTD test")
 parser.add_argument("--model_names", default=['ACM', 'ALCNet', 'DNANet', 'ISNet', 'UIUNet', 'RDIAN', 'ISTDU-Net'], type=list, 
                     help="model_name: 'ACM', 'ALCNet', 'DNANet', 'ISNet', 'RISTDnet', 'UIUNet', 'U-Net', 'RDIAN', 'ISTDU-Net'")
+parser.add_argument("--save_log", type=str, default='./log/', help="path of saved .pth")
 parser.add_argument("--pth_dirs", default=None, type=list, help="checkpoint dir: ['NUAA-SIRST/ACM_400.pth', 'NUDT-SIRST/ALCNet_400.pth.tar', 'IRSTD-1K/DNANet_400.pth.tar'], default=None")
 parser.add_argument("--dataset_dir", default='../DNAnet/dataset/SIRST3', type=str, help="train_dataset_dir")
 parser.add_argument("--dataset_names", default=['NUAA-SIRST', 'NUDT-SIRST', 'IRSTD-1K'], type=list,
@@ -21,7 +22,6 @@ parser.add_argument("--img_norm_cfg", default=None, type=dict,
 
 parser.add_argument("--save_img", default=True, type=bool, help="save image of or not")
 parser.add_argument("--save_img_dir", type=str, default='./results/', help="path of saved image")
-parser.add_argument("--save_log", type=str, default='./log/', help="path of saved .pth")
 parser.add_argument("--threshold", type=float, default=0.5)
 
 global opt
