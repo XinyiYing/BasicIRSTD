@@ -79,6 +79,7 @@ if __name__ == '__main__':
         opt.f.close()
     else:
         for dataset_name in opt.dataset_names:
+            opt.dataset_name = dataset_name
             opt.test_dataset_name = dataset_name
             for pth_dir in opt.pth_dirs:
                 for model_name in opt.model_names:
