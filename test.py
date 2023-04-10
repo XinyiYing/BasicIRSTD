@@ -12,7 +12,7 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 parser = argparse.ArgumentParser(description="PyTorch BasicIRSTD test")
 parser.add_argument("--model_names", default=['ACM', 'ALCNet', 'DNANet', 'ISNet', 'UIUNet', 'RDIAN', 'ISTDU-Net'], type=list, 
                     help="model_name: 'ACM', 'ALCNet', 'DNANet', 'ISNet', 'RISTDnet', 'UIUNet', 'U-Net', 'RDIAN', 'ISTDU-Net'")
-parser.add_argument("--pth_dirs", default=None, type=list, help="checkpoint dir, default=None")
+parser.add_argument("--pth_dirs", default=None, type=list, help="checkpoint dir: ['NUAA-SIRST/ACM_400.pth', 'NUDT-SIRST/ALCNet_400.pth.tar', 'IRSTD-1K/DNANet_400.pth.tar'], default=None")
 parser.add_argument("--dataset_dir", default='../DNAnet/dataset/SIRST3', type=str, help="train_dataset_dir")
 parser.add_argument("--dataset_names", default=['NUAA-SIRST', 'NUDT-SIRST', 'IRSTD-1K'], type=list,
                     help="dataset_name: 'NUAA-SIRST', 'NUDT-SIRST', 'IRSTD-1K', 'SIRST3', 'NUDT-SIRST-Sea'")
@@ -84,12 +84,12 @@ if __name__ == '__main__':
                 for model_name in opt.model_names:
                     if model_name in pth_dir:
                         opt.model_name = model_name
-                train_dataset_name = pth_dir.split('/')[0]
+                opt.train_dataset_name = pth_dir.split('/')[0]
                 print(opt.model_name)
                 opt.f.write(opt.model_name + '\n')
                 print(opt.test_dataset_name)
                 opt.f.write(opt.test_dataset_name + '\n')
-                opt.pth_dir = pth_dir
+                opt.pth_dir = opt.save_log + pth_dir
                 test()
                 print('\n')
                 opt.f.write('\n')
