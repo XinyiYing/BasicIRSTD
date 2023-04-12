@@ -21,7 +21,7 @@ Our BasicIRSTD can help researchers to get access to infrared small target detct
 
 ## Requirements
 - **Python 3**
-- **pytorch (1.2.0), torchvision (0.4.0) or higher**
+- **pytorch 1.2.0 or higher**
 - **numpy, PIL**
 <br><br>
 
