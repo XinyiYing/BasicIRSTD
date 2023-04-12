@@ -39,22 +39,31 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1kp
 * **Our project has the following structure:**
   ```
   ├──./datasets/
-  │    ├── images
-  │    │    ├── XDU0.png
-  │    │    ├── Misc_1.png
-  │    │    ├── ...
-  │    │    ├── 001327.png
-  │    ├── masks
-  │    │    ├── XDU0.png
-  │    │    ├── Misc_1.png
-  │    │    ├── ...
-  │    │    ├── 001327.png
-  │    ├── img_idx
-  │    │    ├── train_NUAA-SIRST.txt
-  │    │    ├── test_NUAA-SIRST.txt
-  │    │    ├── train_NUDT-SIRST.txt
-  │    │    ├── test_NUDT-SIRST.txt
-  │    │    ├── ...
+  │    ├── NUAA-SIRST
+  │    │    ├── images
+  │    │    │    ├── XDU0.png
+  │    │    │    ├── XDU1.png
+  │    │    │    ├── ...
+  │    │    ├── masks
+  │    │    │    ├── XDU0.png
+  │    │    │    ├── XDU1.png
+  │    │    │    ├── ...
+  │    │    ├── img_idx
+  │    │    │    ├── train_NUAA-SIRST.txt
+  │    │    │    ├── test_NUAA-SIRST.txt
+  │    ├── NUDT-SIRST
+  │    │    ├── images
+  │    │    │    ├── 000001.png
+  │    │    │    ├── 000002.png
+  │    │    │    ├── ...
+  │    │    ├── masks
+  │    │    │    ├── 000001.png
+  │    │    │    ├── 000002.png
+  │    │    │    ├── ...
+  │    │    ├── img_idx
+  │    │    │    ├── train_NUDT-SIRST.txt
+  │    │    │    ├── test_NUDT-SIRST.txt
+  │    ├── ...  
   ```
 <br>
 
