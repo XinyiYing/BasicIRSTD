@@ -115,7 +115,14 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1zh
   ```
   $ python evaluate.py --method_name [ACM, ALCNet] --dataset_name [NUAA-SIRST, NUDT-SIRST] 
   ```
-* **The PA/mIoU and PD/FA values of each dataset will be saved to** **`./eval_[current time].txt.txt`**<br><br>
+* **The PA/mIoU and PD/FA values of each dataset will be saved to** **`./eval_[current time].txt`**<br><br>
+
+## Commands for parameters/FLOPs calculation
+* **Run **`cal_params.py`** for parameters and FLOPs calculation. Examples:**
+  ```
+  $ python cal_params.py --method_name [ACM, ALCNet]
+  ```
+* **The parameters and FLOPs of each method will be saved to** **`./params_[current time].txt`**<br><br>
 
 ## Benchmark
 
