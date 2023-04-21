@@ -88,9 +88,9 @@ def get_img_norm_cfg(dataset_name, dataset_dir):
     elif dataset_name == 'SIRST4':
         img_norm_cfg = dict(mean=62.10432052612305, std=23.96998405456543)
     else:
-        with open(dataset_dir+'/img_idx/train_' + dataset_name + '.txt', 'r') as f:
+        with open(dataset_dir+'/'+dataset_name+'/img_idx/train_' + dataset_name + '.txt', 'r') as f:
             train_list = f.read().splitlines()
-        with open(dataset_dir+'/img_idx/test_' + dataset_name + '.txt', 'r') as f:
+        with open(dataset_dir+'/'+dataset_name+'/img_idx/test_' + dataset_name + '.txt', 'r') as f:
             test_list = f.read().splitlines()
         img_list = train_list + test_list
         img_dir = dataset_dir + '/images/'
