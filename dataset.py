@@ -29,6 +29,8 @@ class TrainSetLoader(Dataset):
                 mask = Image.open((self.dataset_dir + '/masks/' + self.train_list[idx] + '.jpg').replace('//','/'))
         img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
         mask = np.array(mask, dtype=np.float32)  / 255.0
+        if len(mask.shape)>3:
+            mask = mask[:,:,0]
         
         img_patch, mask_patch = random_crop(img, mask, self.patch_size)
         img_patch, mask_patch = self.tranform(img_patch, mask_patch)
@@ -64,7 +66,9 @@ class TestSetLoader(Dataset):
 
         img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
         mask = np.array(mask, dtype=np.float32)  / 255.0
-        
+        if len(mask.shape)>3:
+            mask = mask[:,:,0]
+            
         h, w = img.shape
         img = np.pad(img, ((0, (h//32+1)*32-h),(0, (w//32+1)*32-w)), mode='constant')
         mask = np.pad(mask, ((0,(h//32+1)*32-h),(0,(w//32+1)*32-w)), mode='constant')
@@ -101,7 +105,11 @@ class EvalSetLoader(Dataset):
                 
         mask_pred = np.array(mask_pred, dtype=np.float32)  / 255.0
         mask_gt = np.array(mask_gt, dtype=np.float32)  / 255.0
-        
+        if len(mask_pred.shape)>3:
+            mask_pred = mask_pred[:,:,0]
+        if len(mask_gt.shape)>3:
+            mask_gt = mask_gt[:,:,0]
+            
         h, w = mask_pred.shape
         
         mask_pred, mask_gt = mask_pred[np.newaxis,:], mask_gt[np.newaxis,:]
