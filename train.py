@@ -18,7 +18,7 @@ parser.add_argument("--dataset_names", default=['NUAA-SIRST'], type=list,
 parser.add_argument("--img_norm_cfg", default=None, type=dict,
                     help="specific a img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
 
-parser.add_argument("--dataset_dir", default='../DNAnet/dataset', type=str, help="train_dataset_dir")
+parser.add_argument("--dataset_dir", default='./dataset', type=str, help="train_dataset_dir")
 parser.add_argument("--batchSize", type=int, default=16, help="Training batch sizse")
 parser.add_argument("--patchSize", type=int, default=256, help="Training patch size")
 parser.add_argument("--save", default='./log5', type=str, help="Save path of checkpoints")
