@@ -18,15 +18,15 @@ class TrainSetLoader(Dataset):
         
     def __getitem__(self, idx):
         try:
-            img = Image.open(self.dataset_dir + '/images/' + self.train_list[idx] + '.png').convert('I')
-            mask = Image.open(self.dataset_dir + '/masks/' + self.train_list[idx] + '.png')
+            img = Image.open((self.dataset_dir + '/images/' + self.train_list[idx] + '.png').replace('//','/')).convert('I')
+            mask = Image.open((self.dataset_dir + '/masks/' + self.train_list[idx] + '.png').replace('//','/'))
         except:
             try:
-                img = Image.open(self.dataset_dir + '/images/' + self.train_list[idx] + '.bmp').convert('I')
-                mask = Image.open(self.dataset_dir + '/masks/' + self.train_list[idx] + '.bmp')
+                img = Image.open((self.dataset_dir + '/images/' + self.train_list[idx] + '.bmp').replace('//','/')).convert('I')
+                mask = Image.open((self.dataset_dir + '/masks/' + self.train_list[idx] + '.bmp').replace('//','/'))
             except:
-                img = Image.open(self.dataset_dir + '/images/' + self.train_list[idx] + '.jpg').convert('I')
-                mask = Image.open(self.dataset_dir + '/masks/' + self.train_list[idx] + '.jpg')
+                img = Image.open((self.dataset_dir + '/images/' + self.train_list[idx] + '.jpg').replace('//','/')).convert('I')
+                mask = Image.open((self.dataset_dir + '/masks/' + self.train_list[idx] + '.jpg').replace('//','/'))
         img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
         mask = np.array(mask, dtype=np.float32)  / 255.0
         
@@ -52,15 +52,15 @@ class TestSetLoader(Dataset):
         
     def __getitem__(self, idx):
         try:
-            img = Image.open(self.dataset_dir + '/images/' + self.test_list[idx] + '.png').convert('I')
-            mask = Image.open(self.dataset_dir + '/masks/' + self.test_list[idx] + '.png')
+            img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.png').replace('//','/')).convert('I')
+            mask = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.png').replace('//','/'))
         except:
             try:
-                img = Image.open(self.dataset_dir + '/images/' + self.test_list[idx] + '.bmp').convert('I')
-                mask = Image.open(self.dataset_dir + '/masks/' + self.test_list[idx] + '.bmp')
+                img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.bmp').replace('//','/')).convert('I')
+                mask = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.bmp').replace('//','/'))
             except:
-                img = Image.open(self.dataset_dir + '/images/' + self.test_list[idx] + '.jpg').convert('I')
-                mask = Image.open(self.dataset_dir + '/masks/' + self.test_list[idx] + '.jpg')
+                img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.jpg').replace('//','/')).convert('I')
+                mask = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.jpg').replace('//','/'))
 
         img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
         mask = np.array(mask, dtype=np.float32)  / 255.0
@@ -89,15 +89,15 @@ class EvalSetLoader(Dataset):
 
     def __getitem__(self, idx):
         try:
-            mask_pred = Image.open(self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/' + self.test_list[idx] + '.png')
-            mask_gt = Image.open(self.dataset_dir + '/masks/' + self.test_list[idx] + '.png')
+            mask_pred = Image.open((self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/' + self.test_list[idx] + '.png').replace('//','/'))
+            mask_gt = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.png').replace('//','/'))
         except:
             try:
-                mask_pred = Image.open(self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/' + self.test_list[idx] + '.bmp')
-                mask_gt = Image.open(self.dataset_dir + '/masks/' + self.test_list[idx] + '.bmp')
+                mask_pred = Image.open((self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/' + self.test_list[idx] + '.bmp').replace('//','/'))
+                mask_gt = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.bmp').replace('//','/'))
             except:
-                mask_pred = Image.open(self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/' + self.test_list[idx] + '.jpg')
-                mask_gt = Image.open(self.dataset_dir + '/masks/' + self.test_list[idx] + '.jpg')
+                mask_pred = Image.open((self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/' + self.test_list[idx] + '.jpg').replace('//','/'))
+                mask_gt = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.jpg').replace('//','/'))
                 
         mask_pred = np.array(mask_pred, dtype=np.float32)  / 255.0
         mask_gt = np.array(mask_gt, dtype=np.float32)  / 255.0
