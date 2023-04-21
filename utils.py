@@ -97,7 +97,13 @@ def get_img_norm_cfg(dataset_name, dataset_dir):
         mean_list = []
         std_list = []
         for img_pth in img_list:
-            img = Image.open(img_dir + img_pth.replace('//','/')).convert('I')
+            try:
+                img = Image.open((img_dir + img_pth).replace('//','/')+'.jpg').convert('I')
+            except:
+                try:
+                    img = Image.open((img_dir + img_pth).replace('//','/')+'.png').convert('I')
+                except:
+                    img = Image.open((img_dir + img_pth).replace('//','/')+'.bmp').convert('I')
             img = np.array(img, dtype=np.float32)
             mean_list.append(img.mean())
             std_list.append(img.std())
