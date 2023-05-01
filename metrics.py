@@ -81,10 +81,6 @@ class PD_FA():
         Final_PD =  self.PD /self.target
         return Final_PD, float(Final_FA.cpu().detach().numpy())
 
-    def reset(self):
-        self.FA  = np.zeros([self.bins+1])
-        self.PD  = np.zeros([self.bins+1])
-
 def batch_pix_accuracy(output, target):   
     if len(target.shape) == 3:
         target = np.expand_dims(target.float(), axis=1)
