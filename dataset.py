@@ -93,8 +93,10 @@ class EvalSetLoader(Dataset):
         img_list_gt = os.listdir(self.dataset_dir + '/masks/')
         img_ext_gt = os.path.splitext(img_list[0])[-1]
         
-        if not img_ext in IMG_EXTENSIONS:
-            raise TypeError("Unrecognized image extensions.")
+        if not img_ext_gt in IMG_EXTENSIONS:
+            raise TypeError("Unrecognized GT image extensions.")
+        if not img_ext_pred in IMG_EXTENSIONS:
+            raise TypeError("Unrecognized Predicted image extensions.")
         mask_pred = Image.open((self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/' + self.test_list[idx] + img_ext_pred).replace('//','/'))
         mask_gt = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + img_ext_gt).replace('//','/'))
                 
