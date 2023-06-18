@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import os
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
+IMG_EXTENSIONS = ('.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG', '.ppm',
+                  '.PPM', '.bmp', '.BMP', '.tif', '.TIF', '.tiff', '.TIFF')
+
 class TrainSetLoader(Dataset):
     def __init__(self, dataset_dir, dataset_name, patch_size, img_norm_cfg=None):
         super(TrainSetLoader).__init__()
@@ -17,16 +20,12 @@ class TrainSetLoader(Dataset):
         self.tranform = augumentation()
         
     def __getitem__(self, idx):
-        try:
-            img = Image.open((self.dataset_dir + '/images/' + self.train_list[idx] + '.png').replace('//','/')).convert('I')
-            mask = Image.open((self.dataset_dir + '/masks/' + self.train_list[idx] + '.png').replace('//','/'))
-        except:
-            try:
-                img = Image.open((self.dataset_dir + '/images/' + self.train_list[idx] + '.bmp').replace('//','/')).convert('I')
-                mask = Image.open((self.dataset_dir + '/masks/' + self.train_list[idx] + '.bmp').replace('//','/'))
-            except:
-                img = Image.open((self.dataset_dir + '/images/' + self.train_list[idx] + '.jpg').replace('//','/')).convert('I')
-                mask = Image.open((self.dataset_dir + '/masks/' + self.train_list[idx] + '.jpg').replace('//','/'))
+        img_list = os.listdir(self.dataset_dir + '/images/')
+        img_ext = os.path.splitext(img_list[0])[-1]
+        if not img_ext in IMG_EXTENSIONS:
+            raise TypeError("Unrecognized image extensions.")
+        img = Image.open((self.dataset_dir + '/images/' + self.train_list[idx] + img_ext).replace('//','/')).convert('I')
+        mask = Image.open((self.dataset_dir + '/masks/' + self.train_list[idx] + img_ext).replace('//','/'))
         img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
         mask = np.array(mask, dtype=np.float32)  / 255.0
         if len(mask.shape)>3:
@@ -53,16 +52,12 @@ class TestSetLoader(Dataset):
             self.img_norm_cfg = img_norm_cfg
         
     def __getitem__(self, idx):
-        try:
-            img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.png').replace('//','/')).convert('I')
-            mask = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.png').replace('//','/'))
-        except:
-            try:
-                img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.bmp').replace('//','/')).convert('I')
-                mask = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.bmp').replace('//','/'))
-            except:
-                img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.jpg').replace('//','/')).convert('I')
-                mask = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.jpg').replace('//','/'))
+        img_list = os.listdir(self.dataset_dir + '/images/')
+        img_ext = os.path.splitext(img_list[0])[-1]
+        if not img_ext in IMG_EXTENSIONS:
+            raise TypeError("Unrecognized image extensions.")
+        img = Image.open((self.dataset_dir + '/images/' + self.train_list[idx] + img_ext).replace('//','/')).convert('I')
+        mask = Image.open((self.dataset_dir + '/masks/' + self.train_list[idx] + img_ext).replace('//','/'))
 
         img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
         mask = np.array(mask, dtype=np.float32)  / 255.0
@@ -92,16 +87,16 @@ class EvalSetLoader(Dataset):
             self.test_list = f.read().splitlines()
 
     def __getitem__(self, idx):
-        try:
-            mask_pred = Image.open((self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/' + self.test_list[idx] + '.png').replace('//','/'))
-            mask_gt = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.png').replace('//','/'))
-        except:
-            try:
-                mask_pred = Image.open((self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/' + self.test_list[idx] + '.bmp').replace('//','/'))
-                mask_gt = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.bmp').replace('//','/'))
-            except:
-                mask_pred = Image.open((self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/' + self.test_list[idx] + '.jpg').replace('//','/'))
-                mask_gt = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.jpg').replace('//','/'))
+        img_list_pred = os.listdir(self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/')
+        img_ext_pred = os.path.splitext(img_list[0])[-1]
+
+        img_list_gt = os.listdir(self.dataset_dir + '/masks/')
+        img_ext_gt = os.path.splitext(img_list[0])[-1]
+        
+        if not img_ext in IMG_EXTENSIONS:
+            raise TypeError("Unrecognized image extensions.")
+        mask_pred = Image.open((self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/' + self.test_list[idx] + img_ext_pred).replace('//','/'))
+        mask_gt = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + img_ext_gt).replace('//','/'))
                 
         mask_pred = np.array(mask_pred, dtype=np.float32)  / 255.0
         mask_gt = np.array(mask_gt, dtype=np.float32)  / 255.0
