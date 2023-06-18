@@ -65,8 +65,8 @@ class TestSetLoader(Dataset):
             mask = mask[:,:,0]
             
         h, w = img.shape
-        img = np.pad(img, ((0, (h//32+1)*32-h),(0, (w//32+1)*32-w)), mode='constant')
-        mask = np.pad(mask, ((0,(h//32+1)*32-h),(0,(w//32+1)*32-w)), mode='constant')
+        img = PadImg(img, 32)
+        mask = PadImg(mask, 32)
         
         img, mask = img[np.newaxis,:], mask[np.newaxis,:]
         
@@ -130,3 +130,9 @@ class augumentation(object):
             input = input.transpose(1, 0)
             target = target.transpose(1, 0)
         return input, target
+
+def PadImg(img, times):
+    h, w = img.shape
+    if not img % times == 0:
+        img = np.pad(img, ((0, (h//times+1)*times-h),(0, (w//times+1)*times-w)), mode='constant')
+    return img
