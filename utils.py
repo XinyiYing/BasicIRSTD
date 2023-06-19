@@ -127,3 +127,9 @@ def get_optimizer(net, optimizer_name, scheduler_name, optimizer_settings, sched
     
     return optimizer, scheduler
         
+
+def PadImg(img, times):
+    h, w = img.shape
+    if not img % times == 0:
+        img = np.pad(img, ((0, (h//times+1)*times-h),(0, (w//times+1)*times-w)), mode='constant')
+    return img
