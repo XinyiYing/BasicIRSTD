@@ -130,9 +130,3 @@ class augumentation(object):
             input = input.transpose(1, 0)
             target = target.transpose(1, 0)
         return input, target
-
-def PadImg(img, times):
-    h, w = img.shape
-    if not img % times == 0:
-        img = np.pad(img, ((0, (h//times+1)*times-h),(0, (w//times+1)*times-w)), mode='constant')
-    return img
