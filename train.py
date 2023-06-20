@@ -151,7 +151,7 @@ if __name__ == '__main__':
             opt.model_name = model_name
             if not os.path.exists(opt.save):
                 os.makedirs(opt.save)
-            opt.f = open(opt.save + '/' + opt.dataset_name + '_' + opt.model_name + '_' + (time.ctime()).replace(' ', '_') + '.txt', 'w')
+            opt.f = open(opt.save + '/' + opt.dataset_name + '_' + opt.model_name + '_' + (time.ctime()).replace(' ', '_').replace(':', '_') + '.txt', 'w')
             print(opt.dataset_name + '\t' + opt.model_name)
             train()
             print('\n')
