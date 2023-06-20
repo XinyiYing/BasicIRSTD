@@ -60,7 +60,7 @@ def test():
     opt.f.write("PD, FA:\t" + str(results2) + '\n')
 
 if __name__ == '__main__':
-    opt.f = open('./test_' + (time.ctime()).replace(' ', '_') + '.txt', 'w')
+    opt.f = open('./test_' + (time.ctime()).replace(' ', '_').replace(':', '_') + '.txt', 'w')
     if opt.pth_dirs == None:
         for i in range(len(opt.model_names)):
             opt.model_name = opt.model_names[i]
