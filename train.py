@@ -30,9 +30,11 @@ parser.add_argument("--scheduler_name", default='MultiStepLR', type=str, help="s
 parser.add_argument("--scheduler_settings", default={'step': [200, 300], 'gamma': 0.1}, type=dict, help="scheduler settings")
 parser.add_argument("--threads", type=int, default=1, help="Number of threads for data loader to use")
 parser.add_argument("--threshold", type=float, default=0.5, help="Threshold for test")
+parser.add_argument("--seed", type=int, default=42, help="Threshold for test")
 
 global opt
 opt = parser.parse_args()
+seed_pytorch(opt.seed)
 
 def train():
     train_set = TrainSetLoader(dataset_dir=opt.dataset_dir, dataset_name=opt.dataset_name, patch_size=opt.patchSize, img_norm_cfg=opt.img_norm_cfg)
@@ -54,7 +56,13 @@ def train():
                 total_loss_list = ckpt['total_loss']
                 for i in range(len(opt.step)):
                     opt.step[i] = opt.step[i] - ckpt['epoch']
-    
+                  
+    ### Default settings                
+    if opt.optimizer_name == 'Adam':
+        opt.optimizer_settings = {'lr': 5e-4}
+        opt.scheduler_name = 'MultiStepLR'
+        opt.scheduler_settings = {'epochs':400, 'step': [200, 300], 'gamma': 0.1}
+  
     ### Default settings of DNANet                
     if opt.optimizer_name == 'Adagrad':
         opt.optimizer_settings['lr'] = 0.05
