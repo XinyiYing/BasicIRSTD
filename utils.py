@@ -14,6 +14,14 @@ import os
 from torch.nn import init
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
+def seed_pytorch(seed=42):
+    random.seed(seed)
+    os.environ['PYTHONHASHSEED'] = str(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
 def weights_init_xavier(m):
     classname = m.__class__.__name__
     if classname.find('Conv2d') != -1 and classname.find('SplAtConv2d') == -1:
