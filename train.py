@@ -70,7 +70,7 @@ def train():
         opt.scheduler_settings['epochs'] = 1500
         opt.scheduler_settings['min_lr'] = 1e-3
         
-        opt.nEpochs = opt.scheduler_settings['epochs']
+    opt.nEpochs = opt.scheduler_settings['epochs']
         
     optimizer, scheduler = get_optimizer(net, opt.optimizer_name, opt.scheduler_name, opt.optimizer_settings, opt.scheduler_settings)
     
