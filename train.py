@@ -129,7 +129,7 @@ def test(save_pth):
         img = Variable(img).cuda()
         pred = net.forward(img)
         pred = pred[:,:,:size[0],:size[1]]
-        gt_mak = gt_mask[:,:,:size[0],:size[1]]
+        gt_mask = gt_mask[:,:,:size[0],:size[1]]
         eval_mIoU.update((pred>opt.threshold).cpu(), gt_mask)
         eval_PD_FA.update((pred[0,0,:,:]>opt.threshold).cpu(), gt_mask[0,0,:,:], size)     
     
