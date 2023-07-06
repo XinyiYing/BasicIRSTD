@@ -88,10 +88,10 @@ class EvalSetLoader(Dataset):
 
     def __getitem__(self, idx):
         img_list_pred = os.listdir(self.mask_pred_dir + self.test_dataset_name + '/' + self.model_name + '/')
-        img_ext_pred = os.path.splitext(img_list[0])[-1]
+        img_ext_pred = os.path.splitext(img_list_pred[0])[-1]
 
         img_list_gt = os.listdir(self.dataset_dir + '/masks/')
-        img_ext_gt = os.path.splitext(img_list[0])[-1]
+        img_ext_gt = os.path.splitext(img_list_gt[0])[-1]
         
         if not img_ext_gt in IMG_EXTENSIONS:
             raise TypeError("Unrecognized GT image extensions.")
