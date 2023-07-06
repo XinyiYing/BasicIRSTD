@@ -41,7 +41,7 @@ def eval():
     opt.f.write("PD, FA:\t" + str(results2) + '\n')
 
 if __name__ == '__main__':
-    opt.f = open('./eval_' + (time.ctime()).replace(' ', '_') + '.txt', 'w')
+    opt.f = open('./eval_' + (time.ctime()).replace(' ', '_').replace(':', '_') + '.txt', 'w')
     for method_name in opt.method_names:
         opt.method_name = method_name
         print(opt.method_name)
