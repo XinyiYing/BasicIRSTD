@@ -49,9 +49,10 @@ def test():
             ### save img
             if opt.save_img == True:
                 img_save = transforms.ToPILImage()((pred[0,0,:,:]).cpu())
-                if not os.path.exists(opt.save_img_dir + opt.test_dataset_name + '/' + opt.model_name):
-                    os.makedirs(opt.save_img_dir + opt.test_dataset_name + '/' + opt.model_name)
-                img_save.save(opt.save_img_dir + opt.test_dataset_name + '/' + opt.model_name + '/' + img_dir[0] + '.png')  
+                save_dir = opt.save_img_dir + opt.test_dataset_name + '/' + opt.model_name + '/' + img_dir[0] + '.png'
+                if not os.path.exists(os.path.dirname(save_dir)):
+                    os.makedirs(os.path.dirname(save_dir))
+                img_save.save(save_dir)    
         
         results1 = eval_mIoU.get()
         results2 = eval_PD_FA.get()
