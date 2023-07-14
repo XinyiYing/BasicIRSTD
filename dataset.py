@@ -56,8 +56,8 @@ class TestSetLoader(Dataset):
         img_ext = os.path.splitext(img_list[0])[-1]
         if not img_ext in IMG_EXTENSIONS:
             raise TypeError("Unrecognized image extensions.")
-        img = Image.open((self.dataset_dir + '/images/' + self.train_list[idx] + img_ext).replace('//','/')).convert('I')
-        mask = Image.open((self.dataset_dir + '/masks/' + self.train_list[idx] + img_ext).replace('//','/'))
+        img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + img_ext).replace('//','/')).convert('I')
+        mask = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + img_ext).replace('//','/'))
 
         img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
         mask = np.array(mask, dtype=np.float32)  / 255.0
