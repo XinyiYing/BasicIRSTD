@@ -22,6 +22,11 @@ class Net(nn.Module):
                 self.model = DNANet(mode='train')
             else:
                 self.model = DNANet(mode='test')  
+        elif model_name == 'DNANet_BY':
+            if mode == 'train':
+                self.model = DNAnet_BY(mode='train')
+            else:
+                self.model = DNAnet_BY(mode='test')  
         elif model_name == 'ACM':
             self.model = ACM()
         elif model_name == 'ALCNet':
