@@ -17,7 +17,7 @@ Our BasicIRSTD can help researchers to get access to infrared small target detct
 
 ## News & Updates
 * **Apirl 4, 2022: Pulic The BasicIRSTD ToolBox.**
-* **July 24, 2023: Update BasicIRSTD ToolBox.**
+* **July 24, 2023: Update BasicIRSTD ToolBox (stable version).**
 
   **Code: We fix bugs to ensure the stability of training results.** 
   <br style="line-height:2em">
