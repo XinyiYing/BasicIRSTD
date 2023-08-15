@@ -55,8 +55,8 @@ def train():
                 net.load_state_dict(ckpt['state_dict'])
                 epoch_state = ckpt['epoch']
                 total_loss_list = ckpt['total_loss']
-                for i in range(len(opt.step)):
-                    opt.step[i] = opt.step[i] - ckpt['epoch']
+                for i in range(len(opt.scheduler_settings['step'])):
+                    opt.scheduler_settings['step'][i] = opt.scheduler_settings['step'][i] - ckpt['epoch']
     
     ### Default settings                
     if opt.optimizer_name == 'Adam':
