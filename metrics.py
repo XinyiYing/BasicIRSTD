@@ -9,6 +9,8 @@ class mIoU():
         self.reset()
 
     def update(self, preds, labels):
+        # print('come_ininin')
+
         correct, labeled = batch_pix_accuracy(preds, labels)
         inter, union = batch_intersection_union(preds, labels)
         self.total_correct += correct
@@ -48,7 +50,6 @@ class PD_FA():
 
         self.target    += len(coord_label)
         self.image_area_total = []
-        self.image_area_match = []
         self.distance_match   = []
         self.dismatch         = []
 
@@ -56,6 +57,7 @@ class PD_FA():
             area_image = np.array(coord_image[K].area)
             self.image_area_total.append(area_image)
 
+        true_img = np.zeros(predits.shape)
         for i in range(len(coord_label)):
             centroid_label = np.array(list(coord_label[i].centroid))
             for m in range(len(coord_image)):
@@ -64,13 +66,11 @@ class PD_FA():
                 area_image = np.array(coord_image[m].area)
                 if distance < 3:
                     self.distance_match.append(distance)
-                    self.image_area_match.append(area_image)
-
+                    true_img[coord_image[m].coords[:,0], coord_image[m].coords[:,1]] = 1
                     del coord_image[m]
                     break
 
-        self.dismatch = [x for x in self.image_area_total if x not in self.image_area_match]
-        self.dismatch_pixel +=np.sum(self.dismatch)
+        self.dismatch_pixel += (predits - true_img).sum()
         self.all_pixel +=size[0]*size[1]
         self.PD +=len(self.distance_match)
 
