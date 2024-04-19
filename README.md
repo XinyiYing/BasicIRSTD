@@ -70,7 +70,13 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
   │    │    │    ├── test_NUDT-SIRST.txt
   │    ├── ...  
   ```
-<br>
+<be>
+
+## Build
+***Compile DCN for ISNet***: <br>
+1. Cd to ```model/ISNet/DCNv2```.
+2. run ```bash make.sh```. The scripts will build DCNv2 automatically and create some folders.
+3. To skip the use of DCNv2, you have to annotate ISNet in ```model/__init__.py```.
 
 ## Commands for Training
 * **Run **`train.py`** to perform network training. Example for training [model_name] on [dataset_name] datasets:**
