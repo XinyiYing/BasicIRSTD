@@ -22,6 +22,9 @@ Our BasicIRSTD can help researchers to get access to infrared small target detct
   **Code: We fix bugs to ensure the stability of training results.** 
   <br style="line-height:2em">
   **Results: We reprodude all models and update the results in table.**
+* **April 19, 2024: Update README.md.**
+  **Build: We add instructions for DCNv2 compiling of ISNet.**
+  **Train on your own models: We add instructions for self-defined model usage.** 
 <br><br>
 
 ## Requirements
