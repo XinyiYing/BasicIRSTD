@@ -90,8 +90,29 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
   │    │    ├── [model_name]_eopch400.pth.tar
   ```
 
-<br>
+<be>
 
+## Train on your own models
+* **Create a folder in ```./model```, and put your own model in this folder.**
+  ```
+  ├──./model/
+  │    ├── xxxNet
+  │    │    ├── model.py
+  ```
+* **Add the model in ```model/__init__.py```..**
+  ```
+  from model.ACM.model_ACM import ASKCResUNet as ACM
+  ...
+  from model.xxxNet.model import net as xxxNet
+  ```
+* **Add the model in ```net.py```..**
+  ```
+  if model_name == 'DNANet':
+     self.model = DNANet(mode='train')
+  ...
+  elif model_name == 'xxxNet':
+     self.model = xxxNet()
+  ...
 ## Commands for Test
 * **Run **`test.py`** to perform network inference. Example for test [model_name] on [dataset_name] datasets:**
   ```
