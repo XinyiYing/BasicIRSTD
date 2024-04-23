@@ -85,7 +85,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
 ## Commands for Training
 * **Run **`train.py`** to perform network training. Example for training [model_name] on [dataset_name] datasets:**
   ```
-  $ python train.py --model_name ['ACM', 'ALCNet'] --dataset_name ['NUAA-SIRST', 'NUDT-SIRST'] --batch_size 16
+  $ python train.py --model_name ['ACM', 'ALCNet'] --dataset_name ['NUAA-SIRST', 'NUDT-SIRST'] --batchSize 16
   ```
 * **Checkpoints and Logs will be saved to **`./log/`**, and the **`./log/`** has the following structure:**
   ```
