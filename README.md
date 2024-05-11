@@ -25,7 +25,10 @@ Our BasicIRSTD can help researchers to get access to infrared small target detct
 * **April 19, 2024: Update README.md.**
 
   **New section "[Build](https://github.com/XinyiYing/BasicIRSTD?tab=readme-ov-file#build)": We add instructions for DCNv2 compiling of ISNet.** <br>
-  **New section "[Train on your own models](https://github.com/XinyiYing/BasicIRSTD?tab=readme-ov-file#train-on-your-own-models)": We add instructions for self-defined model usage.** 
+  **New section "[Train on your own models](https://github.com/XinyiYing/BasicIRSTD?tab=readme-ov-file#train-on-your-own-models)": We add instructions for self-defined model usage.**
+* **May 11, 2024: Update README.md.**
+  
+  **Updated section "[Recources](Recources)": Update the link to the pre-trained models and result files.** <br>
 <br><br>
 
 ## Requirements
