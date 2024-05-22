@@ -88,7 +88,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
 ## Commands for Training
 * **Run **`train.py`** to perform network training. Example for training [model_name] on [dataset_name] datasets:**
   ```
-  $ python train.py --model_names ['ACM', 'ALCNet'] --dataset_name ['NUAA-SIRST', 'NUDT-SIRST'] --batchSize 16
+  $ python train.py
   ```
 * **Checkpoints and Logs will be saved to **`./log/`**, and the **`./log/`** has the following structure:**
   ```
@@ -123,7 +123,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
 ## Commands for Test
 * **Run **`test.py`** to perform network inference. Example for test [model_name] on [dataset_name] datasets:**
   ```
-  $ python test.py --model_name ['ACM', 'ALCNet'] --dataset_name ['NUAA-SIRST', 'NUDT-SIRST'] 
+  $ python test.py
   ```
   
 * **The PA/mIoU and PD/FA values of each dataset will be saved to** **`./test_[current time].txt`**<br>
