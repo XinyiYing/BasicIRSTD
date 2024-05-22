@@ -152,14 +152,14 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
   ```
 * **Run **`evaluate.py`** for direct eevaluation. Example for evaluate [method_name] on [dataset_name] datasets:**
   ```
-  $ python evaluate.py --method_name [ACM, ALCNet] --dataset_name [NUAA-SIRST, NUDT-SIRST] 
+  $ python evaluate.py
   ```
 * **The PA/mIoU and PD/FA values of each dataset will be saved to** **`./eval_[current time].txt`**<br><br>
 
 ## Commands for parameters/FLOPs calculation
 * **Run **`cal_params.py`** for parameters and FLOPs calculation. Examples:**
   ```
-  $ python cal_params.py --method_name [ACM, ALCNet]
+  $ python cal_params.py
   ```
 * **The parameters and FLOPs of each method will be saved to** **`./params_[current time].txt`**<br><br>
 
