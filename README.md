@@ -88,7 +88,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
 ## Commands for Training
 * **Run **`train.py`** to perform network training. Example for training [model_name] on [dataset_name] datasets:**
   ```
-  $ python train.py
+  $ python train.py --model_names '["ACM"]' --dataset_names '["NUDT-SIRST"]' --batchSize 16 --dataset_dir datasets
   ```
 * **Checkpoints and Logs will be saved to **`./log/`**, and the **`./log/`** has the following structure:**
   ```
