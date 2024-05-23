@@ -8,12 +8,13 @@ import matplotlib.pyplot as plt
 from metrics import *
 import numpy as np
 import os
+import ast
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
 parser = argparse.ArgumentParser(description="PyTorch BasicIRSTD train")
-parser.add_argument("--model_names", default=['ACM', 'ALCNet'], type=list, 
+parser.add_argument("--model_names", default=['ACM', 'ALCNet'], type=str, 
                     help="model_name: 'ACM', 'ALCNet', 'DNANet', 'ISNet', 'UIUNet', 'RDIAN', 'ISTDU-Net', 'U-Net', 'RISTDnet'")              
-parser.add_argument("--dataset_names", default=['NUAA-SIRST'], type=list, 
+parser.add_argument("--dataset_names", default=['NUAA-SIRST'], type=str, 
                     help="dataset_name: 'NUAA-SIRST', 'NUDT-SIRST', 'IRSTD-1K', 'SIRST3', 'NUDT-SIRST-Sea', 'IRDST-real'")
 parser.add_argument("--img_norm_cfg", default=None, type=dict,
                     help="specific a img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
@@ -34,6 +35,8 @@ parser.add_argument("--seed", type=int, default=42, help="Threshold for test")
 
 global opt
 opt = parser.parse_args()
+opt.dataset_names = ast.literal_eval(opt.dataset_names)
+opt.model_names = ast.literal_eval(opt.model_names)
 
 seed_pytorch(opt.seed)
 
