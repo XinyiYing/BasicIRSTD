@@ -150,7 +150,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
   │    │   │    ├── ...
   │    │   │    ├── XDU20.png
   ```
-* **Run **`evaluate.py`** for direct eevaluation. Example for evaluate [method_name] on [dataset_name] datasets:**
+* **Run **`evaluate.py`** for direct eevaluation. Parameter settings can be seen at the beginning of **`evaluate.py`****
   ```
   $ python evaluate.py
   ```
