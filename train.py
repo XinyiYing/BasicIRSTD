@@ -23,6 +23,7 @@ parser.add_argument("--batchSize", type=int, default=16, help="Training batch si
 parser.add_argument("--patchSize", type=int, default=256, help="Training patch size")
 parser.add_argument("--save", default='./log', type=str, help="Save path of checkpoints")
 parser.add_argument("--resume", default=None, type=list, help="Resume from exisiting checkpoints (default: None)")
+parser.add_argument("--pretrained", default=None, type=list, help="Resume from exisiting checkpoints (default: None)")
 parser.add_argument("--nEpochs", type=int, default=400, help="Number of epochs")
 parser.add_argument("--optimizer_name", default='Adam', type=str, help="optimizer name: Adam, Adagrad, SGD")
 parser.add_argument("--optimizer_settings", default={'lr': 5e-4}, type=dict, help="optimizer settings")
@@ -57,6 +58,11 @@ def train():
                 total_loss_list = ckpt['total_loss']
                 for i in range(len(opt.scheduler_settings['step'])):
                     opt.scheduler_settings['step'][i] = opt.scheduler_settings['step'][i] - ckpt['epoch']
+    if opt.pretrained:
+        for pretrained_pth in opt.pretrained:
+            if opt.dataset_name in pretrained_pth and opt.model_name in pretrained_pth:
+                ckpt = torch.load(resume_pth)
+                net.load_state_dict(ckpt['state_dict'])
     
     ### Default settings                
     if opt.optimizer_name == 'Adam':
