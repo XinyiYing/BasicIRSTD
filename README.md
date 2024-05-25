@@ -86,9 +86,9 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
 3. To skip the use of DCNv2, you have to annotate ISNet in ```model/__init__.py```.
 
 ## Commands for Training
-* **Run **`train.py`** to perform network training. Parameter settings can be seen at the beginning of **`train.py`**:**
+* **Run **`train.py`** to perform network training. Example for training [model_name] on [dataset_name] datasets:**
   ```
-  $ python train.py
+  $ python train.py --model_names ACM ALCNet --dataset_names NUAA-SIRST
   ```
 * **Checkpoints and Logs will be saved to **`./log/`**, and the **`./log/`** has the following structure:**
   ```
@@ -121,9 +121,9 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
      self.model = xxxNet()
   ...
 ## Commands for Test
-* **Run **`test.py`** to perform network inference. Parameter settings can be seen at the beginning of **`test.py`**:**
+* **Run **`test.py`** to perform network inference. Example for test [model_name] on [dataset_name] datasets:**
   ```
-  $ python test.py
+  $ python test.py --model_names ACM ALCNet --dataset_names NUAA-SIRST
   ```
   
 * **The PA/mIoU and PD/FA values of each dataset will be saved to** **`./test_[current time].txt`**<br>
@@ -150,9 +150,9 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
   │    │   │    ├── ...
   │    │   │    ├── XDU20.png
   ```
-* **Run **`evaluate.py`** for direct eevaluation. Parameter settings can be seen at the beginning of **`evaluate.py`****
+* **Run **`evaluate.py`** for direct eevaluation. Example for evaluate [model_name] on [dataset_name] datasets:**
   ```
-  $ python evaluate.py
+  $ python evaluate.py --model_names ACM --dataset_names NUAA-SIRST
   ```
 * **The PA/mIoU and PD/FA values of each dataset will be saved to** **`./eval_[current time].txt`**<br><br>
 
