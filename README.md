@@ -159,7 +159,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
 ## Commands for parameters/FLOPs calculation
 * **Run **`cal_params.py`** for parameters and FLOPs calculation. Examples:**
   ```
-  $ python cal_params.py
+  $ python cal_params.py --model_names ACM ALCNet
   ```
 * **The parameters and FLOPs of each method will be saved to** **`./params_[current time].txt`**<br><br>
 
