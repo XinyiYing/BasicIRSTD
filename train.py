@@ -22,7 +22,7 @@ parser.add_argument("--dataset_dir", default='./dataset', type=str, help="train_
 parser.add_argument("--batchSize", type=int, default=16, help="Training batch sizse")
 parser.add_argument("--patchSize", type=int, default=256, help="Training patch size")
 parser.add_argument("--save", default='./log', type=str, help="Save path of checkpoints")
-parser.add_argument("--resume", default=None, type=list, help="Resume from exisiting checkpoints (default: None)")
+parser.add_argument("--resume", default=None, type=list, help="Load pretrained checkpoints (default: None)")
 parser.add_argument("--pretrained", default=None, type=list, help="Resume from exisiting checkpoints (default: None)")
 parser.add_argument("--nEpochs", type=int, default=400, help="Number of epochs")
 parser.add_argument("--optimizer_name", default='Adam', type=str, help="optimizer name: Adam, Adagrad, SGD")
