@@ -86,7 +86,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
 3. To skip the use of DCNv2, you have to annotate ISNet in ```model/__init__.py```.
 
 ## Commands for Training
-* **Run **`train.py`** to perform network training. Example for training [model_name] on [dataset_name] datasets:**
+* **Run **`train.py`** to perform network training. Parameter settings can be seen at the beginning of **`train.py`**:**
   ```
   $ python train.py
   ```
@@ -121,7 +121,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
      self.model = xxxNet()
   ...
 ## Commands for Test
-* **Run **`test.py`** to perform network inference. Example for test [model_name] on [dataset_name] datasets:**
+* **Run **`test.py`** to perform network inference. Parameter settings can be seen at the beginning of **`test.py`**:**
   ```
   $ python test.py
   ```
