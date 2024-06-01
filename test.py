@@ -18,6 +18,10 @@ parser.add_argument("--dataset_names", default=['NUAA-SIRST', 'NUDT-SIRST', 'IRS
                     help="dataset_name: 'NUAA-SIRST', 'NUDT-SIRST', 'IRSTD-1K', 'SIRST3', 'NUDT-SIRST-Sea'")
 parser.add_argument("--img_norm_cfg", default=None, type=dict,
                     help="specific a img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
+parser.add_argument("--img_norm_cfg_mean", default=None, type=float,
+                    help="specific a mean value img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
+parser.add_argument("--img_norm_cfg_stdn", default=None, type=float,
+                    help="specific a std value img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
 
 parser.add_argument("--save_img", default=True, type=bool, help="save image of or not")
 parser.add_argument("--save_img_dir", type=str, default='./results/', help="path of saved image")
@@ -26,7 +30,11 @@ parser.add_argument("--threshold", type=float, default=0.5)
 
 global opt
 opt = parser.parse_args()
-
+## Set img_norm_cfg
+if opt.img_norm_cfg_mean != None and opt.img_norm_cfg_std != None:
+  opt.img_norm_cfg['mean'] = opt.img_norm_cfg_mean
+  opt.img_norm_cfg['std'] = opt.img_norm_cfg_std
+  
 def test(): 
     test_set = TestSetLoader(opt.dataset_dir, opt.train_dataset_name, opt.test_dataset_name, opt.img_norm_cfg)
     test_loader = DataLoader(dataset=test_set, num_workers=1, batch_size=1, shuffle=False)
