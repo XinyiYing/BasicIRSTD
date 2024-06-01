@@ -9,7 +9,7 @@ import os
 import time
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
-parser = argparse.ArgumentParser(description="PyTorch BasicIRSTD test")
+parser = argparse.ArgumentParser(description="PyTorch BasicIRSTD Inference without mask")
 parser.add_argument("--model_names", default=['ACM', 'ALCNet','DNANet', 'ISNet', 'RDIAN', 'ISTDU-Net'], nargs='+',  
                     help="model_name: 'ACM', 'ALCNet', 'DNANet', 'ISNet', 'UIUNet', 'RDIAN', 'ISTDU-Net', 'U-Net', 'RISTDnet'")
 parser.add_argument("--pth_dirs", default=None, nargs='+',  help="checkpoint dir, default=None or ['NUDT-SIRST/ACM_400.pth.tar','NUAA-SIRST/ACM_400.pth.tar']")
