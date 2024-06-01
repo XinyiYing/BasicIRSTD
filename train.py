@@ -41,6 +41,7 @@ global opt
 opt = parser.parse_args()
 ## Set img_norm_cfg
 if opt.img_norm_cfg_mean != None and opt.img_norm_cfg_std != None:
+  opt.img_norm_cfg = dict()
   opt.img_norm_cfg['mean'] = opt.img_norm_cfg_mean
   opt.img_norm_cfg['std'] = opt.img_norm_cfg_std
 
