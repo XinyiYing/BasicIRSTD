@@ -69,12 +69,14 @@ def train():
         opt.optimizer_settings = {'lr': 5e-4}
         opt.scheduler_name = 'MultiStepLR'
         opt.scheduler_settings = {'epochs':400, 'step': [200, 300], 'gamma': 0.1}
+        opt.scheduler_settings['epochs'] = opt.nEpochs
     
     ### Default settings of DNANet                
     if opt.optimizer_name == 'Adagrad':
         opt.optimizer_settings = {'lr': 0.05}
         opt.scheduler_name = 'CosineAnnealingLR'
         opt.scheduler_settings = {'epochs':1500, 'min_lr':1e-5}
+        opt.scheduler_settings['epochs'] = opt.nEpochs
         
     opt.nEpochs = opt.scheduler_settings['epochs']
         
