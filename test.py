@@ -40,7 +40,10 @@ def test():
     test_loader = DataLoader(dataset=test_set, num_workers=1, batch_size=1, shuffle=False)
     
     net = Net(model_name=opt.model_name, mode='test').cuda()
-    net.load_state_dict(torch.load(opt.pth_dir)['state_dict'])
+    try:
+        net.load_state_dict(torch.load(opt.pth_dir)['state_dict'])
+    except:
+        net.load_state_dict(torch.load(opt.pth_dir, map_location=device)['state_dict'])
     net.eval()
     
     eval_mIoU = mIoU() 
