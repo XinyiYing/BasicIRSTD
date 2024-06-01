@@ -17,6 +17,10 @@ parser.add_argument("--dataset_names", default=['NUAA-SIRST'], nargs='+',
                     help="dataset_name: 'NUAA-SIRST', 'NUDT-SIRST', 'IRSTD-1K', 'SIRST3', 'NUDT-SIRST-Sea', 'IRDST-real'")
 parser.add_argument("--img_norm_cfg", default=None, type=dict,
                     help="specific a img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
+parser.add_argument("--img_norm_cfg_mean", default=None, type=float,
+                    help="specific a mean value img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
+parser.add_argument("--img_norm_cfg_stdn", default=None, type=float,
+                    help="specific a std value img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
 
 parser.add_argument("--dataset_dir", default='./datasets', type=str, help="train_dataset_dir")
 parser.add_argument("--batchSize", type=int, default=16, help="Training batch sizse")
@@ -35,6 +39,10 @@ parser.add_argument("--seed", type=int, default=42, help="Threshold for test")
 
 global opt
 opt = parser.parse_args()
+## Set img_norm_cfg
+if opt.img_norm_cfg_mean != None and opt.img_norm_cfg_std != None:
+  opt.img_norm_cfg['mean'] = opt.img_norm_cfg_mean
+  opt.img_norm_cfg['std'] = opt.img_norm_cfg_std
 
 seed_pytorch(opt.seed)
 
