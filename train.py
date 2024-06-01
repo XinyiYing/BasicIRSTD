@@ -19,7 +19,7 @@ parser.add_argument("--img_norm_cfg", default=None, type=dict,
                     help="specific a img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
 parser.add_argument("--img_norm_cfg_mean", default=None, type=float,
                     help="specific a mean value img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
-parser.add_argument("--img_norm_cfg_stdn", default=None, type=float,
+parser.add_argument("--img_norm_cfg_std", default=None, type=float,
                     help="specific a std value img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
 
 parser.add_argument("--dataset_dir", default='./datasets', type=str, help="train_dataset_dir")
