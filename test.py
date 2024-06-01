@@ -43,6 +43,7 @@ def test():
     try:
         net.load_state_dict(torch.load(opt.pth_dir)['state_dict'])
     except:
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         net.load_state_dict(torch.load(opt.pth_dir, map_location=device)['state_dict'])
     net.eval()
     
