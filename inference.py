@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from metrics import *
 import os
 import time
+from tqdm import tqdm
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 parser = argparse.ArgumentParser(description="PyTorch BasicIRSTD Inference without mask")
@@ -48,7 +49,7 @@ def test():
         net.load_state_dict(torch.load(opt.pth_dir, map_location=device)['state_dict'])
     net.eval()
     
-    for idx_iter, (img, size, img_dir) in enumerate(test_loader):
+    for idx_iter, (img, size, img_dir) in tqdm(enumerate(test_loader)):
         img = Variable(img).cuda()
         pred = net.forward(img)
         pred = pred[:,:,:size[0],:size[1]]        
