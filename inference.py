@@ -54,7 +54,7 @@ def test():
         pred = pred[:,:,:size[0],:size[1]]        
         ### save img
         if opt.save_img == True:
-            img_save = transforms.ToPILImage()((pred[0,0,:,:]).cpu())
+            img_save = transforms.ToPILImage()(((pred[0,0,:,:]>opt.threshold).float()).cpu())
             if not os.path.exists(opt.save_img_dir + opt.test_dataset_name + '/' + opt.model_name):
                 os.makedirs(opt.save_img_dir + opt.test_dataset_name + '/' + opt.model_name)
             img_save.save(opt.save_img_dir + opt.test_dataset_name + '/' + opt.model_name + '/' + img_dir[0] + '.png')  
