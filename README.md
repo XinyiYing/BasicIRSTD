@@ -85,7 +85,8 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
 2. run ```bash make.sh```. The scripts will build DCNv2 automatically and create some folders.
 3. To skip the use of DCNv2, you have to annotate ISNet in ```model/__init__.py```.
 
-## Commands for training
+## Commands
+### Commands for training
 * **Run **`train.py`** to perform network training. Example for training [model_name] on [dataset_name] datasets:**
   ```
   $ python train.py --model_names ACM ALCNet --dataset_names NUAA-SIRST
@@ -99,7 +100,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
 
 <be>
 
-## Train on your own models
+### Train on your own models
 * **Create a folder in ```./model```, and put your own model in this folder.**
   ```
   ├──./model/
@@ -120,7 +121,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
   elif model_name == 'xxxNet':
      self.model = xxxNet()
   ...
-## Commands for test
+### Commands for test
 * **Run **`test.py`** to perform network inference and evaluation. Example for test [model_name] on [dataset_name] datasets:**
   ```
   $ python test.py --model_names ACM ALCNet --dataset_names NUAA-SIRST
@@ -137,7 +138,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
   │    │   │    ├── ...
   │    │   │    ├── XDU20.png
   ```
-## Commands for inference only with images
+### Commands for inference only with images
 * **Run **`inference.py`** to inference only with images. Examples:**
   ```
   $ python inference.py --model_names ACM --dataset_names NUAA-SIRST
@@ -153,7 +154,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
   │    │   │    ├── XDU20.png
   ```
   
-## Commands for evaluate on your own results
+### Commands for evaluate on your own results
 * **Please first put your results on** **`./results/`** **that has the following structure:**
   ```
   ├──./results/
@@ -171,12 +172,13 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
 * **The PA/mIoU and PD/FA values of each dataset will be saved to** **`./eval_[current time].txt`**<br><br>
 
 
-## Commands for parameters/FLOPs calculation
+### Commands for parameters/FLOPs calculation
 * **Run **`cal_params.py`** for parameters and FLOPs calculation. Examples:**
   ```
   $ python cal_params.py --model_names ACM ALCNet
   ```
 * **The parameters and FLOPs of each method will be saved to** **`./params_[current time].txt`**<br><br>
+<be>
 
 ## Benchmark
 
