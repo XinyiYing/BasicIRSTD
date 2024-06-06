@@ -50,6 +50,8 @@ class Net(nn.Module):
             self.model = ISTDU_Net()
         elif model_name == 'RDIAN':
             self.model = RDIAN()
+        elif model_name == 'ResUNet':
+            self.model = ResUNet()
         
     def forward(self, img):
         return self.model(img)
