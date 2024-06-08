@@ -34,7 +34,7 @@ Our BasicIRSTD can help researchers to get access to infrared small target detct
 ## Requirements
 - **Python 3**
 - **pytorch 1.2.0 or higher**
-- **numpy, PIL**
+- **numpy, PIL, tqdm, shutil**
 <br><br>
 
 ## Datasets
@@ -87,9 +87,10 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1df
 
 ## Commands
 ### Commands for training
-* **Run **`train.py`** to perform network training. Example for training [model_name] on [dataset_name] datasets:**
+* **Run **`train.py`** to perform network training in single GPU and multiple GPUs. Example for training [model_name] on [dataset_name] datasets:**
   ```
   $ python train.py --model_names ACM ALCNet --dataset_names NUAA-SIRST
+  $ CUDA_VISIBLE_DEVICES=0,1 python train.py --model_names ACM ALCNet --dataset_names NUAA-SIRST
   ```
 * **Checkpoints and Logs will be saved to **`./log/`**, and the **`./log/`** has the following structure:**
   ```
