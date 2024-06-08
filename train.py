@@ -88,7 +88,8 @@ def train():
         opt.scheduler_settings['epochs'] = opt.nEpochs
         
     opt.nEpochs = opt.scheduler_settings['epochs']
-        
+
+    net = torch.nn.DataParallel(net)
     optimizer, scheduler = get_optimizer(net, opt.optimizer_name, opt.scheduler_name, opt.optimizer_settings, opt.scheduler_settings)
     
     for idx_epoch in range(epoch_state, opt.nEpochs):
@@ -97,7 +98,7 @@ def train():
             if img.shape[0] == 1:
                 continue
             pred = net.forward(img)
-            loss = net.loss(pred, gt_mask)
+            loss = net.module.loss(pred, gt_mask)
             total_loss_epoch.append(loss.detach().cpu())
             
             optimizer.zero_grad()
@@ -117,7 +118,7 @@ def train():
             save_pth = opt.save + '/' + opt.dataset_name + '/' + opt.model_name + '_' + str(idx_epoch + 1) + '.pth.tar'
             save_checkpoint({
                 'epoch': idx_epoch + 1,
-                'state_dict': net.state_dict(),
+                'state_dict': net.module.state_dict(),
                 'total_loss': total_loss_list,
                 }, save_pth)
             test(save_pth)
@@ -126,7 +127,7 @@ def train():
             save_pth = opt.save + '/' + opt.dataset_name + '/' + opt.model_name + '_' + str(idx_epoch + 1) + '.pth.tar'
             save_checkpoint({
                 'epoch': idx_epoch + 1,
-                'state_dict': net.state_dict(),
+                'state_dict': net.module.state_dict(),
                 'total_loss': total_loss_list,
                 }, save_pth)
             test(save_pth)
