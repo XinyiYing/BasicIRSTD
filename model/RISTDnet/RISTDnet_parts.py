@@ -3,13 +3,10 @@ import torch.nn as nn
 from torch.nn import functional as F
 from .CovKernelFW import get_kernels
 from .FeatureMap import GenLikeMap
-from tensorboardX import SummaryWriter
 from torchvision.utils import make_grid
 
 global global_step
 global_step = 0
-
-conv_writer = SummaryWriter(comment='--conv')
 
 
 class FENetwFW(nn.Module):
