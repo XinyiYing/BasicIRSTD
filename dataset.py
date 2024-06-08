@@ -1,6 +1,7 @@
 from utils import *
 import matplotlib.pyplot as plt
 import os
+import shutil
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
 class TrainSetLoader(Dataset):
@@ -9,6 +10,8 @@ class TrainSetLoader(Dataset):
         self.dataset_name = dataset_name
         self.dataset_dir = dataset_dir + '/' + dataset_name
         self.patch_size = patch_size
+        if not os.path.exists(self.dataset_dir +'/img_idx/train_' + dataset_name + '.txt') and os.path.exists(self.dataset_dir +'/img_idx/train.txt'):
+            shutil.copyfile(self.dataset_dir +'/img_idx/train.txt', self.dataset_dir +'/img_idx/train_' + dataset_name + '.txt')
         with open(self.dataset_dir +'/img_idx/train_' + dataset_name + '.txt', 'r') as f:
             self.train_list = f.read().splitlines()
         if img_norm_cfg == None:
