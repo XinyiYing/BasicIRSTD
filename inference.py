@@ -64,23 +64,18 @@ def test():
     print('Inference Done!')
    
 if __name__ == '__main__':
-    opt.f = open(opt.save_log + 'test_' + (time.ctime()).replace(' ', '_').replace(':', '_') + '.txt', 'w')
     if opt.pth_dirs == None:
         for i in range(len(opt.model_names)):
             opt.model_name = opt.model_names[i]
             print(opt.model_name)
-            opt.f.write(opt.model_name + '_400.pth.tar' + '\n')
             for dataset_name in opt.dataset_names:
                 opt.dataset_name = dataset_name
                 opt.train_dataset_name = opt.dataset_name
                 opt.test_dataset_name = opt.dataset_name
                 print(dataset_name)
-                opt.f.write(opt.dataset_name + '\n')
                 opt.pth_dir = opt.save_log + opt.dataset_name + '/' + opt.model_name + '_400.pth.tar'
                 test()
             print('\n')
-            opt.f.write('\n')
-        opt.f.close()
     else:
         for model_name in opt.model_names:
             for dataset_name in opt.dataset_names:
@@ -90,12 +85,8 @@ if __name__ == '__main__':
                         opt.model_name = model_name
                         opt.train_dataset_name = pth_dir.split('/')[0]
                         print(pth_dir)
-                        opt.f.write(pth_dir)
                         print(opt.test_dataset_name)
-                        opt.f.write(opt.test_dataset_name + '\n')
                         opt.pth_dir = opt.save_log + pth_dir
                         test()
                         print('\n')
-                        opt.f.write('\n')
-        opt.f.close()
         
