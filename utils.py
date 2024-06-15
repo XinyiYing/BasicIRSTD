@@ -66,7 +66,8 @@ def random_crop(img, mask, patch_size, pos_prob=None):
         img = np.pad(img, ((0, max(h, patch_size)-h),(0, max(w, patch_size)-w)), mode='constant')
         mask = np.pad(mask, ((0, max(h, patch_size)-h),(0, max(w, patch_size)-w)), mode='constant')
         h, w = img.shape
-        
+
+    cur_pos_prob = random.random()
     while 1:
         h_start = random.randint(0, h - patch_size)
         h_end = h_start + patch_size
@@ -76,7 +77,7 @@ def random_crop(img, mask, patch_size, pos_prob=None):
         img_patch = img[h_start:h_end, w_start:w_end]
         mask_patch = mask[h_start:h_end, w_start:w_end]
         
-        if pos_prob == None or random.random()> pos_prob:
+        if pos_prob == None or cur_pos_prob > pos_prob:
             break
         elif mask_patch.sum() > 0:
             break
