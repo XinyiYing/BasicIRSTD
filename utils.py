@@ -76,7 +76,9 @@ def random_crop(img, mask, patch_size, pos_prob=None):
 
         img_patch = img[h_start:h_end, w_start:w_end]
         mask_patch = mask[h_start:h_end, w_start:w_end]
-        
+
+        if mask.sum() == 0:
+            break
         if pos_prob == None or cur_pos_prob > pos_prob:
             break
         elif mask_patch.sum() > 0:
