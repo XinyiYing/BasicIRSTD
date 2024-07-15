@@ -35,6 +35,7 @@ parser.add_argument("--scheduler_name", default='MultiStepLR', type=str, help="s
 parser.add_argument("--scheduler_settings", default={'step': [200, 300], 'gamma': 0.5}, type=dict, help="scheduler settings")
 parser.add_argument("--threads", type=int, default=1, help="Number of threads for data loader to use")
 parser.add_argument("--threshold", type=float, default=0.5, help="Threshold for test")
+parser.add_argument("--intervals", type=int, default=1, help="Intervals for print loss")
 parser.add_argument("--seed", type=int, default=42, help="Threshold for test")
 
 global opt
@@ -106,7 +107,7 @@ def train():
             optimizer.step()
 
         scheduler.step()
-        if (idx_epoch + 1) % 10 == 0:
+        if (idx_epoch + 1) % opt.intervals == 0:
             total_loss_list.append(float(np.array(total_loss_epoch).mean()))
             print(time.ctime()[4:-5] + ' Epoch---%d, total_loss---%f,' 
                   % (idx_epoch + 1, total_loss_list[-1]))
