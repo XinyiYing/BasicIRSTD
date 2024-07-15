@@ -67,7 +67,7 @@ def random_crop(img, mask, patch_size, pos_prob=None):
         mask = np.pad(mask, ((0, max(h, patch_size)-h),(0, max(w, patch_size)-w)), mode='constant')
         h, w = img.shape
 
-    pos_prob = random.random()
+    cur_prob = random.random()
     if pos_prob == None or cur_prob > pos_prob or mask.max() == 0:
         h_start = random.randint(0, h - patch_size)
         w_start = random.randint(0, w - patch_size)
