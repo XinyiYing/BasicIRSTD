@@ -144,13 +144,14 @@ def test(save_pth):
     
     eval_mIoU = mIoU() 
     eval_PD_FA = PD_FA()
-    for idx_iter, (img, gt_mask, size, _) in enumerate(test_loader):
-        img = Variable(img).cuda()
-        pred = net.forward(img)
-        pred = pred[:,:,:size[0],:size[1]]
-        gt_mask = gt_mask[:,:,:size[0],:size[1]]
-        eval_mIoU.update((pred>opt.threshold).cpu(), gt_mask)
-        eval_PD_FA.update((pred[0,0,:,:]>opt.threshold).cpu(), gt_mask[0,0,:,:], size)     
+    with torch.no_grad():
+        for idx_iter, (img, gt_mask, size, _) in enumerate(test_loader):
+            img = Variable(img).cuda()
+            pred = net.forward(img)
+            pred = pred[:,:,:size[0],:size[1]]
+            gt_mask = gt_mask[:,:,:size[0],:size[1]]
+            eval_mIoU.update((pred>opt.threshold).cpu(), gt_mask)
+            eval_PD_FA.update((pred[0,0,:,:]>opt.threshold).cpu(), gt_mask[0,0,:,:], size)     
     
     results1 = eval_mIoU.get()
     results2 = eval_PD_FA.get()
